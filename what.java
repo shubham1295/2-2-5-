@@ -1,20 +1,22 @@
 package test;
 
 import java.lang.reflect.Field;
-import java.util.*;
 
 public class what {
 
 	public static void main(String[] args)
 			throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+		
+		Class cache = Integer.class.getDeclaredClasses()[0]; // Create cache object.
 
-		Class cache = Integer.class.getDeclaredClasses()[0];
-		Field c = cache.getDeclaredField("cache");
-		c.setAccessible(true);
-		Integer[] array = (Integer[]) c.get(cache);
-		array[132] = array[133];
+		Field c = cache.getDeclaredField("cache"); // Get Declared Field
+		c.setAccessible(true);	// Set it's accessibility
 
-		System.out.printf("%d",2 + 2);
+		Integer[] array = (Integer[]) c.get(cache); // Getting the array from the cache
+
+		array[132] = array[133]; // Replacing 4 with 5
+
+		System.out.printf("%d", 2 + 2); // what
 	}
 
 }
